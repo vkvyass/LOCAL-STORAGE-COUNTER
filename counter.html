@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Counter</title>
+    <style>
+        div{
+            border: 2px;
+            margin: auto;
+            width: 60%;
+            margin-top: 20%;
+            text-align: center;
+        }
+        #like{
+            padding: 10px;
+            width: 100px;
+            background-color: green;
+            border-radius: 5px;
+            border: 1px;
+            color: white;
+            font-weight: bold;
+        }
+        #unlike{
+            padding: 10px;
+            width: 100px;
+            background-color: red;
+            border-radius: 5px;
+            border: 1px;
+            color: white;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="zero">0</h1>
+        <button id="like">Like</button>
+        <button id="unlike">UnLike</button>
+    </div>
+    
+</body>
+<script>
+    document.querySelector("#like").addEventListener('click',likefunction);
+    document.querySelector("#unlike").addEventListener('click',unlikefunction);
+
+    var count;
+    if(localStorage.getItem('count')==null){
+        count = 0;
+    }else{
+        count = localStorage.getItem('count');
+    }
+    document.querySelector("h1").innerText = count;
+    function likefunction(){
+        count++;
+        localStorage.setItem('count',count);
+        document.getElementById('zero').innerText = count;
+    }
+    function unlikefunction(){
+        count--;
+        localStorage.setItem('count',count);
+        document.getElementById('zero').innerText = count;
+    }
+
+</script>
+</html>
